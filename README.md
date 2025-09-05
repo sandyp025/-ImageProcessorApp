@@ -4,7 +4,6 @@
 
 ![Java](https://img.shields.io/badge/Java-21-blue?logo=openjdk)
 ![JavaFX](https://img.shields.io/badge/JavaFX-21-orange?logo=java)
-![Maven](https://img.shields.io/badge/Maven-Build-success-brightgreen?logo=apachemaven)
 ![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey?logo=apple)
 ![License](https://img.shields.io/badge/License-MIT-yellow?logo=open-source-initiative)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
