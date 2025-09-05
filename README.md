@@ -44,7 +44,7 @@
 <img src="/screenshots/original.png" width="600" alt="Original Image">
 
 <h3>Grayscale Filter Applied</h3>
-<img src="/screenshots/grayscale.png" width="600" alt="Grayscale Filter">
+<img src="/screenshots/grayscalex.png" width="600" alt="Grayscale Filter">
 
 <h3>Sepia Filter Dropdown</h3>
 <img src="/screenshots/image2.png" width="600" alt="Sepia Filter">
