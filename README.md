@@ -240,7 +240,7 @@ output/                         # Processed image output directory
 ### Architecture Diagram
 
 <h3></h3>
-<img src="/screenshots/ARC.png" width="600" alt="Color Boost Filter">
+<img src="/screenshots/arc.png" width="600" alt="Color Boost Filter">
 
 ### Performance Architecture
 
