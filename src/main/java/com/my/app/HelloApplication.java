@@ -330,8 +330,23 @@ public class HelloApplication extends Application {
             
             @Override
             protected void failed() {
-                logArea.appendText("Error processing image: " + getException().getMessage() + "\n");
+                Throwable exception = getException();
+                String errorMessage = exception.getMessage();
+                
+                logArea.appendText("Error processing image: " + errorMessage + "\n");
                 processingProgress.setProgress(0);
+                
+                // Show user-friendly alert for tile size errors
+                if (exception instanceof IllegalArgumentException && errorMessage.contains("Tile size")) {
+                    Platform.runLater(() -> {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Invalid Tile Size");
+                        alert.setHeaderText("Tile size doesn't divide image dimensions evenly");
+                        alert.setContentText(errorMessage);
+                        alert.getDialogPane().setPrefWidth(600);
+                        alert.showAndWait();
+                    });
+                }
             }
         };
         

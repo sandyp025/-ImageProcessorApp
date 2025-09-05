@@ -52,8 +52,12 @@ public class ImageProcessor {
         int height = image.getHeight();
 
         if(width%num != 0 || height%num !=0 ) {
-            System.err.println("Require a num, which completely divides the image, given num: "+num);
-            return null;
+            String errorMsg = String.format("Tile size %d doesn't divide image dimensions %dx%d evenly. " +
+                "Image width must be divisible by %d (remainder: %d) and height must be divisible by %d (remainder: %d). " +
+                "Try tile sizes like: %s", 
+                num, width, height, num, width%num, num, height%num, getSuggestedTileSizes(width, height));
+            System.err.println(errorMsg);
+            throw new IllegalArgumentException(errorMsg);
         }
 
         int horizontalImages = width / num;
@@ -106,5 +110,28 @@ public class ImageProcessor {
         g.dispose();
 
         return finalImage;
+    }
+    
+    private String getSuggestedTileSizes(int width, int height) {
+        java.util.List<Integer> suggestions = new java.util.ArrayList<>();
+        
+        // Find common divisors between 20 and 100
+        for (int size = 20; size <= 100; size += 5) {
+            if (width % size == 0 && height % size == 0) {
+                suggestions.add(size);
+            }
+        }
+        
+        // If no good divisors found in range, find any divisors
+        if (suggestions.isEmpty()) {
+            for (int size = 1; size <= Math.min(width, height); size++) {
+                if (width % size == 0 && height % size == 0 && size >= 10) {
+                    suggestions.add(size);
+                    if (suggestions.size() >= 5) break; // Limit suggestions
+                }
+            }
+        }
+        
+        return suggestions.isEmpty() ? "none found" : suggestions.toString();
     }
 }
